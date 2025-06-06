@@ -1,0 +1,10 @@
+# ninja log v6
+2	43	1749177791903650968	/Users/tableleaf/Documents/GitHub/plane/gui/untitled/build/Qt_6_9_1_for_macOS-Debug/CMakeFiles/cmake.verify_globs	59484a805b970c94
+43	749	1749177792633476161	untitled_autogen/timestamp	6eaa432c0757a905
+43	749	1749177792633476161	untitled_autogen/mocs_compilation.cpp	6eaa432c0757a905
+43	749	1749177792633476161	/Users/tableleaf/Documents/GitHub/plane/gui/untitled/build/Qt_6_9_1_for_macOS-Debug/untitled_autogen/timestamp	6eaa432c0757a905
+43	749	1749177792633476161	/Users/tableleaf/Documents/GitHub/plane/gui/untitled/build/Qt_6_9_1_for_macOS-Debug/untitled_autogen/mocs_compilation.cpp	6eaa432c0757a905
+752	2094	1749177792653918768	CMakeFiles/untitled.dir/untitled_autogen/mocs_compilation.cpp.o	21eaa931029ca956
+753	2097	1749177792654242134	CMakeFiles/untitled.dir/main.cpp.o	377f6ba7d5024f6c
+753	2110	1749177792654430004	CMakeFiles/untitled.dir/mainwindow.cpp.o	db5e8b55b2781400
+2110	2391	1749177794011711332	untitled.app/Contents/MacOS/untitled	63c70a914cf3a286
