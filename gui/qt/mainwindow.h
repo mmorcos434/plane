@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLineEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,6 +19,10 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
+    QLineEdit *lineEdit_m1;
+    QLineEdit *lineEdit_m2;
+    QLineEdit *lineEdit_m3;
+    QLineEdit *lineEdit_ground;
+    QLineEdit *lineEdit_equ;
 };
 #endif // MAINWINDOW_H

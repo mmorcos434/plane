@@ -1010,6 +1010,7 @@
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qtversionchecks.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qtypeinfo.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qtypes.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qurl.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qutf8stringview.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qvariant.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qvarlengtharray.h \
@@ -1030,18 +1031,26 @@
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qkeysequence.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qpaintdevice.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qpalette.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qpen.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qpixelformat.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qpixmap.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qpolygon.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qregion.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qrgb.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qrgba64.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qtextcursor.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qtextdocument.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qtextformat.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qtextoption.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qtgui-config.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qtguiexports.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qtguiglobal.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qtransform.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qlineedit.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qsizepolicy.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \

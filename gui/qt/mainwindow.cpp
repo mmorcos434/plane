@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QVBoxLayout>
 #include <QLineEdit>
+#include <QLabel>
 #include <QPushButton>
 #include <QString>
 #include <QMessageBox>
@@ -9,43 +10,64 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     this->setWindowTitle("Sensitivity Analysis");
-    this->setStyleSheet("background-color: lightblue;");
 
+    this->setStyleSheet(
+    "QWidget { background-color: lightblue; }"
 
-    QWidget *centralWidget = new QWidget(this);
+    "QLineEdit {"
+    "  border: 2px solid #4CAF50;"
+    "  border-radius: 8px;"
+    "  padding: 8px;"
+    "  font-size: 16px;"
+    "  color: #333;"
+    "  background-color: #f0f0f0;"
+    "}"
+
+    "QLabel {"
+    "  font-size: 12px;"
+    "  color: #444;"
+    "}"
+
+    );
+
+    //QMainWindow only supports one centralWidget
+
+    QWidget *centralWidget = new QWidget(this); //makes a blank container
     this->setCentralWidget(centralWidget);
 
 
-    QVBoxLayout *layout = new QVBoxLayout(centralWidget);
+    QVBoxLayout *layout = new QVBoxLayout(centralWidget); // creates vertical box layout
 
+    auto addInputWithLabel = [&](const QString &placeholder, const QString &labelText) {
 
-    QLineEdit *lineEdit_m1 = new QLineEdit(this);
-    lineEdit_m1->setPlaceholderText("Enter value of m1");
+        //creates textbox and label
+        QLineEdit *lineEdit = new QLineEdit(this);
+        lineEdit->setPlaceholderText(placeholder);
+        QLabel *label = new QLabel(labelText, this);
 
-    lineEdit_m1->setStyleSheet(
-        "QLineEdit {"
-        "  border: 2px solid #4CAF50;"
-        "  border-radius: 8px;"
-        "  padding: 8px;"
-        "  font-size: 16px;"
-        "  color: #333;"
-        "  background-color: #f0f0f0;"
-        "}"
-    );
+        //makes its own vertical box layout to put inside the centralWidget: texbox and label in one layout
+        QVBoxLayout *onelayout = new QVBoxLayout();
+        onelayout->addWidget(lineEdit, 0, Qt::AlignLeft);
+        onelayout->addWidget(label, 0, Qt::AlignLeft);
 
+        //add this layout to main layout
+        layout->addLayout(onelayout);
+        return lineEdit; // return lineEdit to use later
+    };
 
-    layout->addWidget(lineEdit_m1);
+    lineEdit_m1 = addInputWithLabel("Enter value for m1", "m1");
+    lineEdit_m2 = addInputWithLabel("Enter value for m2", "m2");
+    lineEdit_m3 = addInputWithLabel("Enter value for m3", "m3");
+    lineEdit_ground = addInputWithLabel("Enter value for ground", "Ground");
 
+    layout->addStretch();
+    layout->setAlignment(Qt::AlignTop);
 
-    connect(lineEdit_m1, &QLineEdit::returnPressed, this, [lineEdit_m1]() {
-        double m1 = lineEdit_m1->text().toDouble();
-        QMessageBox::information(nullptr, "Result", "Value entered: " + QString::number(m1));
-    });
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+
 }
 
 

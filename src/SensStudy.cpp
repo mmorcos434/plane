@@ -3,21 +3,26 @@
 # include <unordered_map>
 #include <chrono>
 #include "exprtk.hpp"
+
 void max_comp_score() {
     double m1_max;
     double m2_max;
     double m3_max;
     double ground;
+
     std::vector<double*> mission_scores = { &m1_max, &m2_max, &m3_max, &ground };
     std::vector<std::string> mission_names = { "m1_max", "m2_max", "m3_max", "ground" };
+
     for (size_t i = 0; i < mission_scores.size(); i++) {
         std::cout << "Put in a value for " << mission_names[i] << ": ";
         std::cin >> *mission_scores[i];
         std::cout << mission_names[i] << " = " << *mission_scores[i] << std::endl;
     }
+
     std::cout << "Is there Anything Else That Affects Total Score Reply 1 for yes and 2 for no";
     std::string user_response_to_mission_q;
     std::cin >> user_response_to_mission_q;
+
     while (user_response_to_mission_q == "1") {
         std::string new_parap_name;
         double new_para_val;
@@ -45,6 +50,7 @@ void max_comp_score() {
             std::cin >> user_response_to_mission_q;
         }
     }
+
     std::cin.ignore();
     std::string total_score_equation;
     std::cout << "Provide the formula to calculate the total mission score: ";
@@ -54,6 +60,7 @@ void max_comp_score() {
     exprtk::symbol_table<double> symbol_table;
     exprtk::expression<double> expression;
     exprtk::parser<double> parser;
+
     for (size_t i = 0; i < mission_scores.size(); ++i) {
         symbol_table.add_variable(mission_names[i], *mission_scores[i]);
     }
@@ -66,10 +73,12 @@ void max_comp_score() {
     else {
         std::cout << "Invalid formula. Please check your syntax." << std::endl;
     }
+
     for (size_t i = 4; i < mission_scores.size(); ++i) {
         delete mission_scores[i];
     }
 }
+
 void find_eq_vars() {
     std::unordered_map<std::string, double> equation_variables_from_user;
     std::cout << "how many variables does this equation have: ";
@@ -83,9 +92,11 @@ void find_eq_vars() {
         std::cin >> temp_Val;
         equation_variables_from_user[temp_input] = temp_Val;
     }
+
     for (const auto& pair : equation_variables_from_user) {     //this was a snippet frm a chat gpt example code on maps lol...
         std::cout << pair.first << ": " << pair.second << "\n";
     } 
+    
     std::cin.ignore();
     std::string reordered_mission_equation;
     std::cout << "Provide the formula to calculate the max mission score: ";
