@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/tableleaf/Documents/GitHub/plane/build",
+  "command": "/usr/bin/clang++  -I/Users/tableleaf/Documents/GitHub/plane/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/sensitivity-study.dir/src/SensStudy.cpp.o -c /Users/tableleaf/Documents/GitHub/plane/src/SensStudy.cpp",
+  "file": "/Users/tableleaf/Documents/GitHub/plane/src/SensStudy.cpp",
+  "output": "CMakeFiles/sensitivity-study.dir/src/SensStudy.cpp.o"
+}
+]

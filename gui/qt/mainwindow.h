@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,5 +25,8 @@ private:
     QLineEdit *lineEdit_m3;
     QLineEdit *lineEdit_ground;
     QLineEdit *lineEdit_equ;
+    QPushButton *addParameterButton;
+
 };
 #endif // MAINWINDOW_H
+

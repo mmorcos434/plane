@@ -1049,9 +1049,12 @@
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/QPushButton \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractbutton.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qlineedit.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qpushbutton.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qsizepolicy.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgets-config.h \

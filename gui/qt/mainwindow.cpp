@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include <QInputDialog>
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QLabel>
@@ -6,9 +7,7 @@
 #include <QString>
 #include <QMessageBox>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-{
+MainWindow::MainWindow(QWidget *parent): QMainWindow(parent) {
     this->setWindowTitle("Sensitivity Analysis");
 
     this->setStyleSheet(
@@ -47,8 +46,9 @@ MainWindow::MainWindow(QWidget *parent)
 
         //makes its own vertical box layout to put inside the centralWidget: texbox and label in one layout
         QVBoxLayout *onelayout = new QVBoxLayout();
-        onelayout->addWidget(lineEdit, 0, Qt::AlignLeft);
         onelayout->addWidget(label, 0, Qt::AlignLeft);
+        onelayout->addWidget(lineEdit, 0, Qt::AlignLeft);
+        // onelayout->addWidget(label, 0, Qt::AlignLeft);
 
         //add this layout to main layout
         layout->addLayout(onelayout);
@@ -59,15 +59,17 @@ MainWindow::MainWindow(QWidget *parent)
     lineEdit_m2 = addInputWithLabel("Enter value for m2", "m2");
     lineEdit_m3 = addInputWithLabel("Enter value for m3", "m3");
     lineEdit_ground = addInputWithLabel("Enter value for ground", "Ground");
+    lineEdit_equ = addInputWithLabel("Enter value Equation", "Equation");
 
     layout->addStretch();
     layout->setAlignment(Qt::AlignTop);
 
 }
 
+
+
 MainWindow::~MainWindow()
 {
 
 }
-
 
