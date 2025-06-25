@@ -3,14 +3,20 @@
 #include <unordered_map>
 #include <chrono>
 #include <random>
-#include <tuple>
+#include <tuple> // to return multiple parameters
 #include <string>
+#include <span>
+#include <TCanvas.h>
+#include <TGraph.h>
+#include <TLegend.h>
+#include <TApplication.h>
 #include "exprtk.hpp"
 //#include "SensStudy.h"
 
 
 std::unordered_map<std::string, std::tuple<int, double, double, double>> equation_variables_from_user;
-
+std::string reordered_mission_equation;
+double total_score = -1;  //decalring now so can ref later evaluate function will modify this
 //declaring it so we can use later
 void evaluate(const std::string& reordered_mission_equation);
 void montecarlo(const std::string& reordered_mission_equation);
@@ -21,7 +27,7 @@ void max_comp_score() {
     double m3_max;
     double ground;
 
-    std::vector<double*> mission_scores = {&m1_max, &m2_max, &m3_max, &ground};
+    std::vector<double*> mission_scores = { &m1_max, &m2_max, &m3_max, &ground };
     //mission_scores = {&m1_max, &m2_max, &m3_max, &ground};
     std::vector<std::string> mission_names = { "m1_max", "m2_max", "m3_max", "ground" };
 
@@ -95,9 +101,9 @@ void find_eq_vars() {
     for (size_t k = 1; k <= number_of_variables_in_reorder; ++k) {
         std::cout << "Input variable " << k << ":" << std::endl;
         std::string temp_input;
-        double temp_Val; 
-        double temp_Val1;
-        double temp_Val2; 
+        double temp_Val;
+        double temp_Val1; // used for monet carlo
+        double temp_Val2;  //used for monte carlo
         std::cin >> temp_input;
         std::cout << "Input variable " << k << "'s type of distribution (ex/ 0: skip Monte Carlo, 1: Uniform, 2: For: Normal):" << std::endl;
         int temp_dist;
@@ -132,10 +138,10 @@ void find_eq_vars() {
         double val, p1, p2;
         std::tie(dist, val, p1, p2) = pair.second;
         std::cout << pair.first << ": (" << dist << ", " << val << ", " << p1 << ", " << p2 << ")\n";
-    } 
+    }
 
     std::cin.ignore();
-    std::string reordered_mission_equation;
+    //std::string reordered_mission_equation;
     std::cout << "Provide the formula to calculate the max mission score: ";
     std::getline(std::cin, reordered_mission_equation);
 
@@ -150,10 +156,12 @@ void find_eq_vars() {
 
     if (run_mc) {
         montecarlo(reordered_mission_equation);
-    } else {
+    }
+    else {
         evaluate(reordered_mission_equation);
     }
 }
+
 
 void evaluate(const std::string& reordered_mission_equation) {
     exprtk::symbol_table<double> mission_reo;
@@ -169,13 +177,85 @@ void evaluate(const std::string& reordered_mission_equation) {
     expression.register_symbol_table(mission_reo);
 
     if (parser.compile(reordered_mission_equation, expression)) {
-        double total_score = expression.value();
+        total_score = expression.value();
         std::cout << "\nTotal Mission Score: " << total_score << std::endl;
-    } else {
+    }
+    else {
         std::cout << "\nInvalid formula. Please check your syntax." << std::endl;
     }
 }
+void parameter_loop(std::string reordered_mission_equation, double total_score) {
+    TCanvas* c = new TCanvas("c", "Parameter Sensitivity", 800, 600);
+    TLegend* legend = new TLegend(0.7, 0.7, 0.9, 0.9);
 
+    bool first_graph = true;
+    std::unordered_map<std::string, double> temp_vars;
+    for (size_t m = 0; m < equation_variables_from_user.size(); ++m) { //goes thru every var stroed in the map
+        auto it = std::next(equation_variables_from_user.begin(), m); //bc map not indexable use next to to get an iterator pos
+        std::string param_name = it->first; //get nam and val
+        double original_value = std::get<1>(it->second);
+
+        std::vector<double> x_vals;
+        std::vector<double> y_vals;// holds data points
+        for (double n = -0.5; n < 1.6; n += 0.1) { //vary the current para
+            for (const auto& [key, tuple_val] : equation_variables_from_user) {
+                temp_vars[key] = std::get<1>(tuple_val); //grrrrrr i hate tuples 
+            }
+
+            temp_vars[param_name] = original_value * (1.0 + n);
+
+            exprtk::symbol_table<double> symbol_table;
+            for (auto& [key, val] : temp_vars) {
+                symbol_table.add_variable(key, val);
+            }
+
+            exprtk::expression<double> expression;
+            expression.register_symbol_table(symbol_table);
+            exprtk::parser<double> parser;
+
+            std::string formula = reordered_mission_equation; //reading from prev function
+
+            if (parser.compile(formula, expression)) {
+                double new_score = expression.value();
+                //std::cout << "Success: score=" << new_score << " | normalized=" << (new_score / total_score) << "\n";
+                x_vals.push_back(n * 100.0);
+                y_vals.push_back(new_score / total_score);  // normalize score
+            }
+            else {
+                std::cout << "Failed to compile expression for param=" << param_name << " at n=" << n << std::endl;
+                x_vals.push_back(n * 100.0);
+                y_vals.push_back(0.0);
+            }
+
+            std::cout << "Trying param=" << param_name
+                << ", n=" << n
+                << ", new_val=" << temp_vars[param_name] << std::endl;
+
+        }
+        //plot func
+        TGraph* graph = new TGraph(x_vals.size(), &x_vals[0], &y_vals[0]);
+        std::cout << "Drawing graph for: " << param_name << " with " << x_vals.size() << " points.\n";
+        graph->SetLineColor(m + 1);
+        graph->SetMarkerColor(m + 1);
+        graph->SetMarkerSize(1.2);
+        graph->SetLineWidth(2);
+        graph->SetMarkerStyle(20 + m);
+        graph->SetTitle(param_name.c_str());
+        if (first_graph) {
+            graph->SetTitle("Sensitivity Analysis;Parameter Change [%];Relative Score");
+            graph->Draw("ALP");
+            first_graph = false;
+        }
+        else {
+            graph->Draw("LP SAME");
+        }
+
+        legend->AddEntry(graph, param_name.c_str(), "l");
+    }
+
+    legend->Draw();
+    c->Update();
+}
 void montecarlo(const std::string& reordered_mission_equation) {
     exprtk::symbol_table<double> mission_reo;
     std::unordered_map<std::string, double> temp_values;
@@ -209,10 +289,12 @@ void montecarlo(const std::string& reordered_mission_equation) {
             if (dist == 1) {
                 std::uniform_real_distribution<> d(p1, p2);
                 temp_values[var] = d(gen);
-            } else if (dist == 2) {
+            }
+            else if (dist == 2) {
                 std::normal_distribution<> d(p1, p2);
                 temp_values[var] = d(gen);
-            } else {
+            }
+            else {
                 temp_values[var] = base;
             }
         }
@@ -244,18 +326,26 @@ void montecarlo(const std::string& reordered_mission_equation) {
 }
 
 int main() {
-    find_eq_vars();
+    int argc = 0;
+    char** argv = nullptr;
+    TApplication theApp("App", &argc, argv);
+
     auto start = std::chrono::high_resolution_clock::now();
 
-    //end t
+    //auto [vars, equation, score] = find_eq_vars();
+    find_eq_vars();
+    std::cout << total_score;
+    parameter_loop(reordered_mission_equation, total_score);
+
     auto end = std::chrono::high_resolution_clock::now();
-
-    //duration
     std::chrono::duration<double, std::milli> duration = end - start;
+    std::cout << "\nExecution time: " << duration.count() << " ms\n";
 
-    std::cout << "Execution time: " << duration.count() << " ms\n";
+    std::cout << "\nPress Enter to exit the program...";
+    std::cin.get();
+
+    theApp.Run();
+
     return 0;
 }
-
-
 
