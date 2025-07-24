@@ -891,6 +891,8 @@
   /Library/Developer/CommandLineTools/usr/lib/clang/16/include/__stdarg_va_list.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/16/include/limits.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/16/include/stdarg.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/QMap \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/QVector \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/q17memory.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/q20functional.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/q20iterator.h \
@@ -1014,6 +1016,7 @@
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qutf8stringview.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qvariant.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qvarlengtharray.h \
+  /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qvector.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qversiontagging.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qxptype_traits.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtCore.framework/Versions/A/Headers/qyieldcpu.h \
@@ -1049,12 +1052,9 @@
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/QLineEdit \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
-  /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/QPushButton \
-  /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractbutton.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qlineedit.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
-  /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qpushbutton.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qsizepolicy.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \
   /Users/tableleaf/Qt/6.9.1/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgets-config.h \
