@@ -11,6 +11,7 @@
 #include <TLegend.h>
 #include <TApplication.h>
 #include "exprtk.hpp"
+#include "SensStudy.h"
 //#include "SensStudy.h"
 
 

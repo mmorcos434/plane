@@ -1,7 +1,9 @@
 {
 	"InstallScripts" : 
 	[
-		"/Users/tableleaf/Documents/GitHub/plane/build/cmake_install.cmake"
+		"/Users/tableleaf/Documents/GitHub/plane/build/cmake_install.cmake",
+		"/Users/tableleaf/Documents/GitHub/plane/build/src/cmake_install.cmake",
+		"/Users/tableleaf/Documents/GitHub/plane/build/gui/qt/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

@@ -1,8 +1,11 @@
-cmake_minimum_required(VERSION 3.10)
-project(sensitivity-study)
+cmake_minimum_required(VERSION 3.16)
 
+project(SensitivityApp)
+
+# Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories(include)
-
-add_executable(sensitivity-study src/SensStudy.cpp)
+# Add subdirectories
+add_subdirectory(src)
+add_subdirectory(gui/qt)

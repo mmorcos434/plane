@@ -64,16 +64,27 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     lineEdit_ground->setPlaceholderText("Enter value for ground");
     lineEdit_ground->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
 
-    groundInputLayout->addWidget(groundLabel, 0, Qt::AlignLeft);
-    groundInputLayout->addWidget(lineEdit_ground, 0, Qt::AlignLeft);
-
+    // Create the button properly with connection
     QPushButton *paraButton = new QPushButton("Extra Parameters", this);
     paraButton->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
-    paraButton->setFixedHeight(45);
+    paraButton->setFixedHeight(45);  // Match your original height
     connect(paraButton, &QPushButton::clicked, this, &MainWindow::onSetParametersClicked);
 
+    // Create container for textbox and button
+    QWidget *inputButtonContainer = new QWidget();
+    QHBoxLayout *containerLayout = new QHBoxLayout(inputButtonContainer);
+    containerLayout->setContentsMargins(0, 0, 0, 0);
+    containerLayout->setSpacing(10);  // Space between textbox and button
+
+    // Add widgets to container
+    containerLayout->addWidget(lineEdit_ground);
+    containerLayout->addWidget(paraButton);  // Using the properly connected button
+
+    // Set up main layout
+    groundInputLayout->addWidget(groundLabel, 0, Qt::AlignLeft);
+    groundInputLayout->addWidget(inputButtonContainer, 0, Qt::AlignLeft);
+
     groundRowLayout->addLayout(groundInputLayout);
-    groundRowLayout->addWidget(paraButton);
     layout->addLayout(groundRowLayout);
 
     // Equation row

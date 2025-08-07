@@ -1,0 +1,143 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "gui/qt",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-gui.qt-Debug-09f7e7c6222fe26e43e4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "gui/qt",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "SensitivityApp"
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "SensitivityStudy",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "GUI",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "GUI::@034cfb98ce1dbe0fef22",
+					"jsonFile" : "target-GUI-Debug-8ac1afd57d1357767289.json",
+					"name" : "GUI",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "GUI_autogen::@034cfb98ce1dbe0fef22",
+					"jsonFile" : "target-GUI_autogen-Debug-75bd9826306895d43237.json",
+					"name" : "GUI_autogen",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "GUI_autogen_timestamp_deps::@034cfb98ce1dbe0fef22",
+					"jsonFile" : "target-GUI_autogen_timestamp_deps-Debug-5d8be8273732125f0003.json",
+					"name" : "GUI_autogen_timestamp_deps",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SensitivityStudy::@145eef247bfb46b6828c",
+					"jsonFile" : "target-SensitivityStudy-Debug-4d6c05726d343d9dcf42.json",
+					"name" : "SensitivityStudy",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/tableleaf/Documents/GitHub/plane/build",
+		"source" : "/Users/tableleaf/Documents/GitHub/plane"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}

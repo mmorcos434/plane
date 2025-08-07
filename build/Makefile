@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/homebrew/bin/cmake
+CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/4.0.2/bin/cmake
 
 # The command to remove a file.
-RM = /opt/homebrew/bin/cmake -E rm -f
+RM = /opt/homebrew/Cellar/cmake/4.0.2/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -65,10 +65,30 @@ CMAKE_BINARY_DIR = /Users/tableleaf/Documents/GitHub/plane/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
+	/opt/homebrew/Cellar/cmake/4.0.2/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+.PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
+	/opt/homebrew/Cellar/cmake/4.0.2/bin/cpack --config ./CPackSourceConfig.cmake /Users/tableleaf/Documents/GitHub/plane/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+.PHONY : package_source/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/opt/homebrew/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/4.0.2/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,12 +98,57 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/opt/homebrew/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/4.0.2/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/opt/homebrew/Cellar/cmake/4.0.2/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/opt/homebrew/Cellar/cmake/4.0.2/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/opt/homebrew/Cellar/cmake/4.0.2/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/opt/homebrew/Cellar/cmake/4.0.2/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/opt/homebrew/Cellar/cmake/4.0.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/opt/homebrew/Cellar/cmake/4.0.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -117,41 +182,56 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named sensitivity-study
+# Target rules for targets named SensitivityStudy
 
 # Build rule for target.
-sensitivity-study: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sensitivity-study
-.PHONY : sensitivity-study
+SensitivityStudy: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SensitivityStudy
+.PHONY : SensitivityStudy
 
 # fast build rule for target.
-sensitivity-study/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sensitivity-study.dir/build.make CMakeFiles/sensitivity-study.dir/build
-.PHONY : sensitivity-study/fast
+SensitivityStudy/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/SensitivityStudy.dir/build.make src/CMakeFiles/SensitivityStudy.dir/build
+.PHONY : SensitivityStudy/fast
 
-src/SensStudy.o: src/SensStudy.cpp.o
-.PHONY : src/SensStudy.o
+#=============================================================================
+# Target rules for targets named GUI
 
-# target to build an object file
-src/SensStudy.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sensitivity-study.dir/build.make CMakeFiles/sensitivity-study.dir/src/SensStudy.cpp.o
-.PHONY : src/SensStudy.cpp.o
+# Build rule for target.
+GUI: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GUI
+.PHONY : GUI
 
-src/SensStudy.i: src/SensStudy.cpp.i
-.PHONY : src/SensStudy.i
+# fast build rule for target.
+GUI/fast:
+	$(MAKE) $(MAKESILENT) -f gui/qt/CMakeFiles/GUI.dir/build.make gui/qt/CMakeFiles/GUI.dir/build
+.PHONY : GUI/fast
 
-# target to preprocess a source file
-src/SensStudy.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sensitivity-study.dir/build.make CMakeFiles/sensitivity-study.dir/src/SensStudy.cpp.i
-.PHONY : src/SensStudy.cpp.i
+#=============================================================================
+# Target rules for targets named GUI_autogen_timestamp_deps
 
-src/SensStudy.s: src/SensStudy.cpp.s
-.PHONY : src/SensStudy.s
+# Build rule for target.
+GUI_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GUI_autogen_timestamp_deps
+.PHONY : GUI_autogen_timestamp_deps
 
-# target to generate assembly for a file
-src/SensStudy.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sensitivity-study.dir/build.make CMakeFiles/sensitivity-study.dir/src/SensStudy.cpp.s
-.PHONY : src/SensStudy.cpp.s
+# fast build rule for target.
+GUI_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f gui/qt/CMakeFiles/GUI_autogen_timestamp_deps.dir/build.make gui/qt/CMakeFiles/GUI_autogen_timestamp_deps.dir/build
+.PHONY : GUI_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named GUI_autogen
+
+# Build rule for target.
+GUI_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GUI_autogen
+.PHONY : GUI_autogen
+
+# fast build rule for target.
+GUI_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f gui/qt/CMakeFiles/GUI_autogen.dir/build.make gui/qt/CMakeFiles/GUI_autogen.dir/build
+.PHONY : GUI_autogen/fast
 
 # Help Target
 help:
@@ -160,11 +240,17 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
-	@echo "... sensitivity-study"
-	@echo "... src/SensStudy.o"
-	@echo "... src/SensStudy.i"
-	@echo "... src/SensStudy.s"
+	@echo "... GUI_autogen"
+	@echo "... GUI_autogen_timestamp_deps"
+	@echo "... GUI"
+	@echo "... SensitivityStudy"
 .PHONY : help
 
 

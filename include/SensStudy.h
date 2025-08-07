@@ -13,8 +13,6 @@ public:
 
     std::vector<double*> mission_scores;
 
-
-
 };
 
 

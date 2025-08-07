@@ -1,8 +1,26 @@
 [
 {
-  "directory": "/Users/tableleaf/Documents/GitHub/plane/build",
-  "command": "/usr/bin/clang++  -I/Users/tableleaf/Documents/GitHub/plane/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/sensitivity-study.dir/src/SensStudy.cpp.o -c /Users/tableleaf/Documents/GitHub/plane/src/SensStudy.cpp",
+  "directory": "/Users/tableleaf/Documents/GitHub/plane/build/src",
+  "command": "/usr/bin/clang++  -I/Users/tableleaf/Documents/GitHub/plane/src/../include -g -std=gnu++17 -arch arm64 -fcolor-diagnostics -stdlib=libc++ -pthread -std=c++17 -m64 -I/opt/homebrew/Cellar/root/6.36.02/include/root -o CMakeFiles/SensitivityStudy.dir/SensStudy.cpp.o -c /Users/tableleaf/Documents/GitHub/plane/src/SensStudy.cpp",
   "file": "/Users/tableleaf/Documents/GitHub/plane/src/SensStudy.cpp",
-  "output": "CMakeFiles/sensitivity-study.dir/src/SensStudy.cpp.o"
+  "output": "src/CMakeFiles/SensitivityStudy.dir/SensStudy.cpp.o"
+},
+{
+  "directory": "/Users/tableleaf/Documents/GitHub/plane/build/gui/qt",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/tableleaf/Documents/GitHub/plane/build/gui/qt/GUI_autogen/include -isystem /opt/homebrew/Cellar/qt/6.9.1/lib/QtWidgets.framework/Headers -iframework /opt/homebrew/Cellar/qt/6.9.1/lib -isystem /opt/homebrew/Cellar/qt/6.9.1/lib/QtCore.framework/Headers -isystem /opt/homebrew/Cellar/qt/6.9.1/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/Cellar/qt/6.9.1/include -isystem /opt/homebrew/Cellar/qt/6.9.1/lib/QtGui.framework/Headers -g -std=gnu++17 -arch arm64 -fcolor-diagnostics -o CMakeFiles/GUI.dir/GUI_autogen/mocs_compilation.cpp.o -c /Users/tableleaf/Documents/GitHub/plane/build/gui/qt/GUI_autogen/mocs_compilation.cpp",
+  "file": "/Users/tableleaf/Documents/GitHub/plane/build/gui/qt/GUI_autogen/mocs_compilation.cpp",
+  "output": "gui/qt/CMakeFiles/GUI.dir/GUI_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/Users/tableleaf/Documents/GitHub/plane/build/gui/qt",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/tableleaf/Documents/GitHub/plane/build/gui/qt/GUI_autogen/include -isystem /opt/homebrew/Cellar/qt/6.9.1/lib/QtWidgets.framework/Headers -iframework /opt/homebrew/Cellar/qt/6.9.1/lib -isystem /opt/homebrew/Cellar/qt/6.9.1/lib/QtCore.framework/Headers -isystem /opt/homebrew/Cellar/qt/6.9.1/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/Cellar/qt/6.9.1/include -isystem /opt/homebrew/Cellar/qt/6.9.1/lib/QtGui.framework/Headers -g -std=gnu++17 -arch arm64 -fcolor-diagnostics -o CMakeFiles/GUI.dir/main.cpp.o -c /Users/tableleaf/Documents/GitHub/plane/gui/qt/main.cpp",
+  "file": "/Users/tableleaf/Documents/GitHub/plane/gui/qt/main.cpp",
+  "output": "gui/qt/CMakeFiles/GUI.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/tableleaf/Documents/GitHub/plane/build/gui/qt",
+  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/Users/tableleaf/Documents/GitHub/plane/build/gui/qt/GUI_autogen/include -isystem /opt/homebrew/Cellar/qt/6.9.1/lib/QtWidgets.framework/Headers -iframework /opt/homebrew/Cellar/qt/6.9.1/lib -isystem /opt/homebrew/Cellar/qt/6.9.1/lib/QtCore.framework/Headers -isystem /opt/homebrew/Cellar/qt/6.9.1/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/Cellar/qt/6.9.1/include -isystem /opt/homebrew/Cellar/qt/6.9.1/lib/QtGui.framework/Headers -g -std=gnu++17 -arch arm64 -fcolor-diagnostics -o CMakeFiles/GUI.dir/mainwindow.cpp.o -c /Users/tableleaf/Documents/GitHub/plane/gui/qt/mainwindow.cpp",
+  "file": "/Users/tableleaf/Documents/GitHub/plane/gui/qt/mainwindow.cpp",
+  "output": "gui/qt/CMakeFiles/GUI.dir/mainwindow.cpp.o"
 }
 ]

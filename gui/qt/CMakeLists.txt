@@ -1,81 +1,74 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(untitled VERSION 0.1 LANGUAGES CXX)
+project(GUI VERSION 1.0.0 LANGUAGES CXX)
 
+# Enable automatic Qt features
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
+# C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_PREFIX_PATH "/opt/homebrew/Cellar/qt/6.9.1" ${CMAKE_PREFIX_PATH})
+# Find Qt6
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
-
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
-
-
-set(TS_FILES untitled_en_US.ts)
-
+# Source files
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        ${TS_FILES}
+    main.cpp
+    mainwindow.cpp
+    mainwindow.h
+    mainwindow.ui
 )
 
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(untitled
-        MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
-    )
-# Define target properties for Android with Qt 6 as:
-#    set_property(TARGET untitled APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
-#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
-# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
+# Create executable
+add_executable(GUI ${PROJECT_SOURCES})
 
-    qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
-else()
-    if(ANDROID)
-        add_library(untitled SHARED
-            ${PROJECT_SOURCES}
-        )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-    else()
-        add_executable(untitled
-            ${PROJECT_SOURCES}
-        )
-    endif()
+target_link_libraries(GUI PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
-endif()
 
-target_link_libraries(untitled PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+# # Link Qt and the backend library
+# target_link_libraries(GUI
+#     Qt6::Widgets
+#     SensitivityStudy  # backend library target
+# )
 
-# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
-# If you are developing for iOS or macOS you should consider setting an
-# explicit, fixed bundle identifier manually though.
-if(${QT_VERSION} VERSION_LESS 6.1.0)
-  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.untitled)
-endif()
-set_target_properties(untitled PROPERTIES
-    ${BUNDLE_ID_OPTION}
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
+# === INSTALL RULES ===
+
+# Install the binary to bin/
+install(TARGETS GUI
+    RUNTIME DESTINATION bin
 )
 
-include(GNUInstallDirs)
-install(TARGETS untitled
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+# Optional: install resources if you have them
+# install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/resources/
+#     DESTINATION share/SensitivityApp/resources)
 
-if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(untitled)
-endif()
+# === CPack CONFIGURATION FOR PACKAGING ===
+
+include(InstallRequiredSystemLibraries)
+
+# Basic metadata for packaging
+set(CPACK_PACKAGE_NAME "SensitivityApp")
+set(CPACK_PACKAGE_VENDOR "YourNameOrOrg")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "GUI for Sensitivity Study")
+set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH 0)
+set(CPACK_PACKAGE_CONTACT "your.email@example.com")
+
+# Format: you can add TGZ, ZIP, DEB, RPM, etc.
+set(CPACK_GENERATOR "TGZ")
+
+# Platform-specific settings (optional, expand later)
+# set(CPACK_DEBIAN_PACKAGE_MAINTAINER "YourName")
+# set(CPACK_PACKAGE_INSTALL_DIRECTORY "SensitivityApp")
+
+include(CPack)
+
+
+
+

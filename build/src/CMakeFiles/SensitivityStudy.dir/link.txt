@@ -1,0 +1,2 @@
+/usr/bin/ar qc libSensitivityStudy.a CMakeFiles/SensitivityStudy.dir/SensStudy.cpp.o
+/usr/bin/ranlib libSensitivityStudy.a
